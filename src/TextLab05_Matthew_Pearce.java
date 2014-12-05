@@ -13,7 +13,8 @@ public class TextLab05_Matthew_Pearce {
 		Rational r = new Rational(num, den);
 		r.displayData();
 		
-		Animation.delay(1100);
+		Animation.delay(900);
+		
 		Animation.animateText("\n\nWould you like to repeat this program [Y/N] >>>>");
 		Scanner scan = new Scanner(System.in);
 		response = scan.nextLine(); 
@@ -100,24 +101,14 @@ class Rational {
 	{
 		public static void animateText(String s)
 		{
-			
-			int length = s.length();
 			int x = 0;
-			String animate = "";
+			char animate;
 			
-			while (x <= length-1)
+			while (x <= s.length()-1)
 			{
-					if (x == length-1)
-					{
-						animate =  s.substring(x);
-						System.out.print(animate);
-					}
-					else
-					{
-						animate =  s.substring(x,x+1);
-						System.out.print(animate);
-					}
-								
+				animate =  s.charAt(x);
+				System.out.print(animate);			
+				
 				delay(50);
 				x++;
 			}
