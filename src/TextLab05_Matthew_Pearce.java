@@ -22,8 +22,6 @@ public class TextLab05_Matthew_Pearce {
 	   }
 	}
 
-
-
 	class Rational
 	{
 	   double num;
@@ -36,10 +34,7 @@ public class TextLab05_Matthew_Pearce {
 	   {
 	     
 	      System.out.println("\n" + getOriginal() + " equals " + getDecimal());
-	      System.out.println("\nThe reduced form is " + getReduced());
-	      
-	     
-	      
+	      System.out.println("\nThe reduced form is " + getReduced());  
 	   }
 	   
 	   public Rational(double eNum , double eDen)
