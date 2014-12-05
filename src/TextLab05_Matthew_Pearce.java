@@ -1,4 +1,5 @@
 import java.util.*;
+import java.awt.*;
 
 public class TextLab05_Matthew_Pearce {
 
@@ -10,9 +11,10 @@ public class TextLab05_Matthew_Pearce {
 		enterData();
 
 		Rational r = new Rational(num, den);
-
 		r.displayData();
-		Animation.animate("\n\nWould you like to repeat this program [Y/N] >>>>");
+		
+		Animation.delay(1100);
+		Animation.animateText("\n\nWould you like to repeat this program [Y/N] >>>>");
 		Scanner scan = new Scanner(System.in);
 		response = scan.nextLine(); 
 		}
@@ -21,38 +23,44 @@ public class TextLab05_Matthew_Pearce {
 
 	public static void enterData() {
 		Scanner input = new Scanner(System.in);
-		Animation.animate("\nEnter the numerator ----> ");
+		Animation.animateText("\nEnter the numerator ----> ");
 		num = input.nextInt();
-		Animation.animate("\nEnter the denominator --> ");
+		Animation.animateText("\nEnter the denominator --> ");
 		den = input.nextInt();
 	}
 }
 
 class Rational {
-	int num;
-	int den;
-	int gcf;
+	private int firstNum;
+	private int firstDen;
+	private int reducedDen;
+	private int reducedNum;
+	private int gcf;
+	
 
-	public void displayData() {
-
+	public void displayData()
+	{
 		
-		Animation.animate("\n" + getOriginal() + " equals " + getDecimal());
-		Animation.animate("\n\nThe reduced form is " + getReduced());
+		Animation.animateText("\n" + getOriginal() + " equals " + getDecimal());
+		Animation.animateText("\n\nThe reduced form is " + getReduced());
 	}
 
-	public Rational(double eNum, double eDen) {
-		num = (int) eNum;
-		den = (int) eDen;
+	public Rational(double num, double den)
+	{
+		this.firstNum = (int) num;
+		this.firstDen = (int) den;
+		reducedNum = (int) num;
+		reducedDen = (int) den;
 	}
 
 	public int getnum() 
 	{
-		return num;
+		return firstNum;
 	}
 
 	public int getden() 
 	{
-		return den;
+		return firstDen;
 	}
 
 	public double getDecimal() {
@@ -61,14 +69,14 @@ class Rational {
 	}
 
 	public String getOriginal() {
-		String original = getnum() + "/" + getden();
+		String original = firstNum + "/" + firstDen;
 		return original;
 	}
 
 	public String getReduced() {
-		int gcf = getGCF(num, den);
-		int reducedNum = (num / gcf);
-		int reducedDen = (den / gcf);
+		int gcf = getGCF(firstNum, firstDen);
+		reducedNum = (firstNum / gcf);
+		reducedDen = (firstDen / gcf);
 		String reduced = reducedNum + "/" + reducedDen;
 		return reduced;
 	}
@@ -84,14 +92,13 @@ class Rational {
 				n2 = rem;
 			}
 		} while (rem != 0);
-
 		return gcf;
 	}
 }
 
 	class Animation
 	{
-		public static void animate(String s)
+		public static void animateText(String s)
 		{
 			
 			int length = s.length();
@@ -100,7 +107,6 @@ class Rational {
 			
 			while (x <= length-1)
 			{
-				
 					if (x == length-1)
 					{
 						animate =  s.substring(x);
@@ -111,8 +117,7 @@ class Rational {
 						animate =  s.substring(x,x+1);
 						System.out.print(animate);
 					}
-						
-							
+								
 				delay(50);
 				x++;
 			}
