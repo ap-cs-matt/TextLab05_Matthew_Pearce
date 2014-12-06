@@ -102,12 +102,10 @@ class Rational {
 		public static void animateText(String s)
 		{
 			int x = 0;
-			char animate;
 			
 			while (x <= s.length()-1)
-			{
-				animate =  s.charAt(x);
-				System.out.print(animate);			
+			{ 
+				System.out.print(s.charAt(x));			
 				
 				delay(50);
 				x++;
